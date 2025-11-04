@@ -1,0 +1,12 @@
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.tmp
+*.log
+*.db
+*.cache
+# Configuración de publicación y empaquetado
+*.publish.xml
+*.zip
