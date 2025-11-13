@@ -128,10 +128,22 @@
 
                 <div class="button">
                     <asp:Button ID="btnUbicar" runat="server" Text="Ubicar" OnClick="btnUbicar_Click" />
-                    <asp:Button ID="btnImprimir" runat="server" Text="Imprimir Directo" OnClick="btnImprimir_Click" Width="170px" />
-                    <asp:Button ID="btnPrevisualizar" runat="server" Text="Previsualizar Etiquetas" OnClick="btnPrevisualizar_Click" Width="220px" />
+                    <asp:Button ID="btnConfirmarImpresion" runat="server" Text="Confirmar e Imprimir" OnClick="btnConfirmarImpresion_Click" Width="210px" />
                 </div>
             </div>
+
+                <!-- Selección de tipo de empaque -->
+                <asp:Label ID="lblTipoEmpaque" runat="server" Text="Tipo de Empaque:" CssClass="lbl-titulo" Font-Bold="True"></asp:Label>
+                <br />
+
+                <asp:RadioButton ID="rbRollo" runat="server" Text="Rollo"
+                    GroupName="Empaque" CssClass="rb-empaque" />
+                <asp:RadioButton ID="rbTubular" runat="server" Text="Tubular"
+                    GroupName="Empaque" CssClass="rb-empaque" />
+                <asp:RadioButton ID="rbTalego" runat="server" Text="Talego"
+                    GroupName="Empaque" CssClass="rb-empaque" />
+
+                <br />
 
             <div class="form-row">
                 <asp:Label ID="lblResultado" runat="server" ForeColor="Black"></asp:Label>
@@ -164,8 +176,6 @@
 
             <%-- Botón de confirmación que manda las etiquetas a la Zebra --%>
             <div class="button" style="margin-top:15px;">
-                <asp:Button ID="btnConfirmarImpresion" runat="server" Text="Confirmar e Imprimir" 
-                            OnClick="btnConfirmarImpresion_Click" Width="210px" />
             </div>
 
             <div class="footer">

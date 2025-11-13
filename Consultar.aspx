@@ -147,6 +147,7 @@
                 <asp:TextBox ID="txtAlbaran" runat="server" CssClass="asp-textbox" />
                 <div class="button">
                     <asp:Button ID="btnConsultar" runat="server" Text="Consultar" OnClick="btnConsultar_Click" />
+                &nbsp;<asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" OnClick="btnLimpiar_Click" />
                 </div>
             </div>
 

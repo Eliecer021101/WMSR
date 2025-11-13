@@ -184,14 +184,17 @@ namespace WMSR
                 if (!string.IsNullOrEmpty(codigoAlbaran))
                 {
                     ObtenerDatos(codigoAlbaran, "albaran");
+                    Session["UltimoCampoBusqueda"] = "albaran";//captura campo de busqueda
                 }
                 else if (!string.IsNullOrEmpty(codigoLote))
                 {
                     ObtenerDatos(codigoLote, "lote",codigoReopera);
+                    Session["UltimoCampoBusqueda"] = "lote";//captura campo de busqueda
                 }
                 else if (!string.IsNullOrEmpty(codigoPiezas))
                 {
                     ObtenerDatos(codigoPiezas, "piezas");
+                    Session["UltimoCampoBusqueda"] = "piezas";//captura campo de busqueda
                 }
                 else
                 {
@@ -199,6 +202,47 @@ namespace WMSR
                     lblResultado.ForeColor = System.Drawing.Color.Red;
                 }
             }
+        }
+
+        protected void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            //captura el ultimo campo de busqueda utilizado
+            string ultimoCampo = Session["UltimoCampoBusqueda"] as string;
+
+            //limpiar campos de entrada
+            txtLote.Text = string.Empty;
+            txtAlbaran.Text = string.Empty;
+            txtPiezas.Text = string.Empty;
+
+            //limpiar etuquetas o mensajes
+            lblResultado.Text = string.Empty;
+
+            //limpiar el datagridview
+            gvDatos.DataSource = null;
+            gvDatos.DataBind();
+
+            //devolver al ultimo campo utilizado
+            if (! string.IsNullOrEmpty(ultimoCampo))
+            {
+                switch(ultimoCampo.ToLower())
+                {
+                    case "lote":
+                        txtLote.Focus();
+                        break;
+                    case "piezas":
+                        txtPiezas.Focus();
+                        break;
+                    case "albaran":
+                        txtAlbaran.Focus();
+                        break;
+                }
+            }
+            else
+            {
+                //devuelve al primero si nunca se hizo busqueda
+                txtLote.Focus();
+            }
+            
         }
 
         protected void btnInicio_Click(object sender, EventArgs e)

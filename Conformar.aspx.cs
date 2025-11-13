@@ -93,6 +93,10 @@ namespace WMSR
                 lblMensaje.Text = "✅ Lote verificado y conformado correctamente.";
                 lblMensaje.CssClass = "msg-ok";
                 ActualizarGridPiezas();
+
+                //limpiar despues de conformar
+                btnLimpiar_Click(sender, e);
+
             }
             catch (Exception ex)
             {
@@ -121,6 +125,8 @@ namespace WMSR
 
                 gvPendientes.DataSource = null;
                 gvPendientes.DataBind();
+                txtLote.Text = "";
+                txtLote.Focus();
             }
             catch (Exception ex)
             {
@@ -158,6 +164,7 @@ namespace WMSR
                         // Si no hubo error y hay datos, enlazamos el GridView
                         gvPendientes.DataSource = dt;
                         gvPendientes.DataBind();
+                        txtPieza.Focus();
 
                         // Mostrar resumen
                         int confirmadas = dt.Select("Estado = 'Confirmada'").Length;
